@@ -1,0 +1,7 @@
+.spotify_token_cache
+.spotufy_token_cache
+.pio/
+.vscode/
+.venv/
+__pycache__/
+.DS_Store

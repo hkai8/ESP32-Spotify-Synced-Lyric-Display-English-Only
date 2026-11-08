@@ -13,12 +13,16 @@ TIMESTAMP = re.compile(r"\[(\d+):(\d+(?:\.\d+)?)\]")
 
 def fetch_lyrics(track, artist):
     # ask LRCLIB for a song's synced lyrics. Returns LRC text, or None
-    response = requests.get(
-        "https://lrclib.net/api/get",
-        params={"track_name": track, "artist_name": artist}, # sends HTTP get request for track name and artist name
-        headers={"User-Agent": "lyrics-learn/1.0"},
-        timeout=10,
-    )
+    try:
+        response = requests.get(
+            "https://lrclib.net/api/get",
+            params={"track_name": track, "artist_name": artist},
+            headers={"User-Agent": "lyrics-learn/1.0"},
+            timeout=10,
+        )
+    except requests.RequestException as e:
+        print("Lyrics download failed:", e)
+        return None
     if response.status_code != 200:
         return None
     return response.json().get("syncedLyrics")

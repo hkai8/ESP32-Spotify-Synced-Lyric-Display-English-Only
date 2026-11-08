@@ -83,7 +83,7 @@ void setup() {
   tft.setRotation(3);
   tft.fillScreen(ST77XX_BLACK);
 
-  showText("Waiting for comupter...", TITLE_Y, TITLE_H, 1, ST77XX_GREEN);
+  showText("Waiting for computer...", TITLE_Y, TITLE_H, 1, ST77XX_GREEN);
 }
 
 void loop() {
